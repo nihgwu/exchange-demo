@@ -42,7 +42,10 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/react-hooks": "^3.2.1",
     "gh-pages": "^2.1.1",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "react-test-renderer": "^16.12.0"
   }
 }

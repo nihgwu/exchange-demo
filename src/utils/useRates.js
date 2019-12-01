@@ -32,12 +32,12 @@ const useRates = () => {
 
           // if failed to fetch rates, retry immediately
           // clearInterval(interval);
-          // interval = setInterval(callback, 100 * 1000);
+          // interval = setInterval(callback, 10 * 1000);
           // callback();
         }
       };
 
-      interval = setInterval(callback, 100 * 1000);
+      interval = setInterval(callback, 10 * 1000);
       callback();
       initial.current = false;
     }
