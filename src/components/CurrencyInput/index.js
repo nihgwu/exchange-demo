@@ -49,6 +49,7 @@ const CurrencyInput = forwardRef(
     return (
       <Input
         {...rest}
+        ref={ref}
         value={value === '' ? '' : `${prefix}${value}`}
         onChange={handleChange}
         onBlur={handleBlur}

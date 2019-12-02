@@ -33,15 +33,19 @@ export const getCodeSymbol = code => {
   return currency ? currency.symbol : '';
 };
 
+// trim trailing zeros
+export const trimNumber = (value, digits = 2) => Number(value.toFixed(digits));
+
 export const formatMoney = (code, value) => {
-  return `${getCodeSymbol(code)}${Number(value.toFixed(2))}`;
+  return `${getCodeSymbol(code)}${trimNumber(value)}`;
 };
 
 export const formatRate = (base, code, rates) => {
   if (!rates || !rates[code] || !rates[code]) return '';
 
   const rate = rates[code] / rates[base];
-  // trim trailing zeros
-  const target = Number(rate.toFixed(4));
-  return `${getCodeSymbol(base)}1 = ${getCodeSymbol(code)}${target}`;
+  return `${getCodeSymbol(base)}1 = ${getCodeSymbol(code)}${trimNumber(
+    rate,
+    4
+  )}`;
 };

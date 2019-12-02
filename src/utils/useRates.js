@@ -2,6 +2,8 @@ import { useRef, useState, useEffect } from 'react';
 
 import { getRates, cancelGetRates } from 'services/rate';
 
+const TIMEOUT = 10 * 1000;
+
 const useRates = () => {
   const initial = useRef(true);
   const [data, setData] = useState({
@@ -18,6 +20,7 @@ const useRates = () => {
         cancelGetRates();
         try {
           const rates = await getRates();
+          // TODO: we could avoid triggering re-render if rates stays the same
           setData({
             loading: false,
             rates,
@@ -30,14 +33,14 @@ const useRates = () => {
             error,
           });
 
-          // if failed to fetch rates, retry immediately
+          // TODO: if failed to fetch rates, retry immediately
           // clearInterval(interval);
-          // interval = setInterval(callback, 10 * 1000);
+          // interval = setInterval(callback, TIMEOUT);
           // callback();
         }
       };
 
-      interval = setInterval(callback, 10 * 1000);
+      interval = setInterval(callback, TIMEOUT);
       callback();
       initial.current = false;
     }

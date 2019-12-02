@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getNextCode, formatRate } from 'utils/currency';
+import { getNextCode, formatRate, trimNumber } from 'utils/currency';
 import useRates from 'utils/useRates';
 
 import {
@@ -21,57 +21,53 @@ const Exchange = () => {
   ]);
   const [fromCode, setFromCode] = useState(currentCode);
   const [toCode, setToCode] = useState(getNextCode(currentCode));
-  const [fromAmount, setFromAmount] = useState(0);
-  const [toAmount, setToAmount] = useState(0);
+  const [direction, setDirection] = useState('from');
+  const [amount, setAmount] = useState(0);
   const { rates, loading, error } = useRates();
   const dispatch = useDispatch();
+
+  const rate = rates ? rates[toCode] / rates[fromCode] : 1;
+  const maxFromAmount = balance[fromCode];
+  const maxToAmount = rates ? maxFromAmount * rate : 0;
+  const fromAmount = direction === 'from' ? amount : trimNumber(amount / rate);
+  const toAmount = direction === 'to' ? amount : trimNumber(amount * rate);
+
+  const hideRate = !rates || loading || error || fromCode === toCode;
+  const exchangeDisabled = hideRate || fromAmount === 0 || fromAmount > maxFromAmount;
 
   const handleFromCodeChange = useCallback(
     code => {
       setFromCode(code);
-      setFromAmount(0);
-      setToAmount(0);
+      setAmount(0);
     },
-    [setFromCode, setFromAmount, setToAmount]
+    [setFromCode, setAmount]
   );
 
   const handleToCodeChange = useCallback(
     code => {
       setToCode(code);
-      setFromAmount(0);
-      setToAmount(0);
+      setAmount(0);
     },
-    [setToCode, setFromAmount, setToAmount]
+    [setToCode, setAmount]
   );
 
-  const handleFromAmountChange = useCallback(
-    value => {
-      const newValue = (value * rates[toCode]) / rates[fromCode];
-      setFromAmount(value);
-      setToAmount(Number(newValue.toFixed(2)));
-    },
-    [rates, fromCode, toCode]
-  );
+  const handleFromFocus = useCallback(() => {
+    if (direction === 'to') {
+      setDirection('from');
+      setAmount(fromAmount);
+    }
+  }, [direction, setDirection, setAmount, fromAmount]);
 
-  const handleToAmountChange = useCallback(
-    value => {
-      const newValue = (value * rates[fromCode]) / rates[toCode];
-      setToAmount(value);
-      setFromAmount(Number(newValue.toFixed(2)));
-    },
-    [rates, fromCode, toCode]
-  );
+  const handleToFocus = useCallback(() => {
+    if (direction === 'from') {
+      setDirection('to');
+      setAmount(toAmount);
+    }
+  }, [direction, setDirection, setAmount, toAmount]);
 
   const handleExchange = useCallback(() => {
     dispatch.wallet.exchange({ fromCode, fromAmount, toCode, toAmount });
   }, [dispatch, fromCode, fromAmount, toCode, toAmount]);
-
-  const hideRate = !rates || loading || error || fromCode === toCode;
-  const exchangeDisabled = hideRate || fromAmount === 0;
-  const maxFromAmount = balance[fromCode];
-  const maxToAmount = rates
-    ? (maxFromAmount * rates[toCode]) / rates[fromCode]
-    : 0;
 
   return (
     <Wrapper>
@@ -97,7 +93,8 @@ const Exchange = () => {
         value={fromAmount}
         maxValue={maxFromAmount}
         disabled={hideRate}
-        onChange={handleFromAmountChange}
+        onFocus={handleFromFocus}
+        onChange={setAmount}
         onCodeChange={handleFromCodeChange}
       />
       <ExchangeSlide
@@ -109,7 +106,8 @@ const Exchange = () => {
         value={toAmount}
         maxValue={maxToAmount}
         disabled={hideRate}
-        onChange={handleToAmountChange}
+        onFocus={handleToFocus}
+        onChange={setAmount}
         onCodeChange={handleToCodeChange}
       />
     </Wrapper>

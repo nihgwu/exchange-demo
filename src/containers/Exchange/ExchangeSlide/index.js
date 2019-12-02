@@ -19,6 +19,7 @@ const ExchangeSlide = ({
   value,
   maxValue,
   disabled,
+  onFocus,
   onChange,
   onCodeChange,
   ...rest
@@ -51,11 +52,12 @@ const ExchangeSlide = ({
                 <Code>{code}</Code>
                 {isCurrent && !disabled && (
                   <Input
-                    autoFocus={isSource}
+                    autoFocus={isSource && isCurrent}
                     value={value}
                     maxValue={maxValue}
                     prefix={isSource ? '-' : '+'}
                     onChange={onChange}
+                    onFocus={onFocus}
                   />
                 )}
               </Label>
@@ -81,6 +83,7 @@ ExchangeSlide.propTypes = {
   targetCode: PropTypes.string.isRequired,
   value: PropTypes.number,
   maxValue: PropTypes.number,
+  onFocus: PropTypes.func,
   onChange: PropTypes.func,
   onCodeChange: PropTypes.func,
 };
