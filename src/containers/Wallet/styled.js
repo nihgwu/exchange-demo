@@ -13,7 +13,7 @@ export const ActionBar = styled.div`
   padding: 20px;
 `;
 
-export const Loader = styled.div`
+export const Error = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;

@@ -15,9 +15,10 @@ import {
 import ExchangeSlide from './ExchangeSlide';
 
 const Exchange = () => {
-  const [currentCode, balance] = useSelector(state => [
+  const [currentCode, balance, savingExchange] = useSelector(state => [
     state.wallet.currentCode,
     state.wallet.balance,
+    state.loading.wallet.exchange,
   ]);
   const [fromCode, setFromCode] = useState(currentCode);
   const [toCode, setToCode] = useState(getNextCode(currentCode));
@@ -33,7 +34,11 @@ const Exchange = () => {
   const toAmount = direction === 'to' ? amount : trimNumber(amount * rate);
 
   const hideRate = !rates || loading || error || fromCode === toCode;
-  const exchangeDisabled = hideRate || fromAmount === 0 || fromAmount > maxFromAmount;
+  const exchangeDisabled =
+    hideRate ||
+    fromAmount === 0 ||
+    fromAmount > maxFromAmount ||
+    savingExchange;
 
   const handleFromCodeChange = useCallback(
     code => {
@@ -92,7 +97,7 @@ const Exchange = () => {
         targetCode={toCode}
         value={fromAmount}
         maxValue={maxFromAmount}
-        disabled={hideRate}
+        disabled={savingExchange}
         onFocus={handleFromFocus}
         onChange={setAmount}
         onCodeChange={handleFromCodeChange}
@@ -105,7 +110,7 @@ const Exchange = () => {
         targetCode={fromCode}
         value={toAmount}
         maxValue={maxToAmount}
-        disabled={hideRate}
+        disabled={savingExchange}
         onFocus={handleToFocus}
         onChange={setAmount}
         onCodeChange={handleToCodeChange}

@@ -38,7 +38,9 @@ const WalletSlide = ({
       >
         {currencyCodes.map(code => (
           <Item key={code}>
-            <Balance>{formatMoney(code, balance[code])}</Balance>
+            <Balance>
+              {balance ? formatMoney(code, balance[code]) : '--'}
+            </Balance>
             <Description>
               {code} - {currencies[code].description}
             </Description>

@@ -47,12 +47,13 @@ const ExchangeSlide = ({
           const isCurrent = code === baseCode;
 
           return (
-            <Item key={code} active={isCurrent}>
+            <Item key={code}>
               <Label>
                 <Code>{code}</Code>
-                {isCurrent && !disabled && (
+                {isCurrent && !!rates && (
                   <Input
-                    autoFocus={isSource && isCurrent}
+                    autoFocus={isSource}
+                    disabled={disabled}
                     value={value}
                     maxValue={maxValue}
                     prefix={isSource ? '-' : '+'}

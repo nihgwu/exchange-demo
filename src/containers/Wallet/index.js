@@ -3,7 +3,7 @@ import IconButton from 'components/IconButton';
 import { Plus, RefreshCw, ArrowRight } from 'react-feather';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Wrapper, ActionBar, Loader } from './styled';
+import { Wrapper, ActionBar, Error } from './styled';
 import WalletSlide from './WalletSlide';
 
 const Exchange = ({ showExchange, ...rest }) => {
@@ -20,10 +20,7 @@ const Exchange = ({ showExchange, ...rest }) => {
   }, [dispatch]);
 
   if (error) {
-    return <Loader>Load balance failed</Loader>;
-  }
-  if (!balance || loading) {
-    return <Loader>Loading</Loader>;
+    return <Error>Load balance failed</Error>;
   }
 
   return (
@@ -37,7 +34,11 @@ const Exchange = ({ showExchange, ...rest }) => {
         <IconButton icon={Plus} disabled>
           Top Up
         </IconButton>
-        <IconButton icon={RefreshCw} onClick={dispatch.wallet.showExchange}>
+        <IconButton
+          icon={RefreshCw}
+          disabled={loading}
+          onClick={dispatch.wallet.showExchange}
+        >
           Exchange
         </IconButton>
         <IconButton icon={ArrowRight} disabled>
