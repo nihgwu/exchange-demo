@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, fireEvent, waitForDomChange } from '@testing-library/react';
-import 'jest-styled-components';
 
 import IconButton from './index';
 
