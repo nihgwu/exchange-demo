@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import { Wrapper, Circle, Svg, Label } from './styled';
 
-const ActionButton = forwardRef(
-  ({ children, icon, iconSize = 48, ...rest }, ref) => (
-    <Wrapper width={iconSize} {...rest} ref={ref}>
+const IconButton = forwardRef(
+  ({ children, icon, iconSize = 48, disabled, ...rest }, ref) => (
+    <Wrapper {...rest} ref={ref} disabled={disabled}>
       <Circle size={iconSize}>
         <Svg as={icon} />
       </Circle>
@@ -14,11 +14,12 @@ const ActionButton = forwardRef(
   )
 );
 
-ActionButton.displayName = 'ActionButton';
-ActionButton.propTypes = {
+IconButton.displayName = 'IconButton';
+IconButton.propTypes = {
   children: PropTypes.string,
   icon: PropTypes.elementType.isRequired,
   iconSize: PropTypes.number,
+  disabled: PropTypes.bool,
 };
 
-export default ActionButton;
+export default IconButton;

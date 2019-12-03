@@ -1,10 +1,21 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Wrapper = styled.div`
+import { boolean, colors } from 'utils/theme';
+
+export const Wrapper = styled.button`
+  background: transparent;
+  border: none;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: ${props => props.width}px;
+
+  ${boolean(
+    'disabled',
+    css`
+      opacity: 0.6;
+    `
+  )}
 `;
 
 export const Circle = styled.div`
@@ -15,15 +26,15 @@ export const Circle = styled.div`
   width: ${props => props.size}px;
   height: ${props => props.size}px;
   border-radius: 50%;
-  border: 1px solid ${props => props.theme.colors.light};
+  border: 1px solid ${colors.light};
 `;
 
 export const Svg = styled.svg`
-  color: ${props => props.theme.colors.white};
+  color: ${colors.white};
 `;
 
 export const Label = styled.label`
-  color: ${props => props.theme.colors.light};
+  color: ${colors.light};
   font-size: 14px;
   margin-top: 10px;
 `;

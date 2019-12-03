@@ -1,18 +1,14 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 
-import theme, { GlobalStyle } from 'utils/theme';
-import store from 'store';
-
-import Router from './Router';
+import store from './store';
+import GlobalStyle from './GlobalStyle';
+import Router from './containers/Router';
 
 const App = () => (
   <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Router />
-    </ThemeProvider>
+    <GlobalStyle />
+    <Router />
   </Provider>
 );
 

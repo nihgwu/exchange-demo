@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import ActionButton from 'components/ActionButton';
+import IconButton from 'components/IconButton';
 import { Plus, RefreshCw, ArrowRight } from 'react-feather';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -34,11 +34,15 @@ const Exchange = ({ showExchange, ...rest }) => {
         onChange={dispatch.wallet.setCurrentCode}
       />
       <ActionBar>
-        <ActionButton icon={Plus}>Top Up</ActionButton>
-        <ActionButton icon={RefreshCw} onClick={dispatch.wallet.showExchange}>
+        <IconButton icon={Plus} disabled>
+          Top Up
+        </IconButton>
+        <IconButton icon={RefreshCw} onClick={dispatch.wallet.showExchange}>
           Exchange
-        </ActionButton>
-        <ActionButton icon={ArrowRight}>Bank</ActionButton>
+        </IconButton>
+        <IconButton icon={ArrowRight} disabled>
+          Bank
+        </IconButton>
       </ActionBar>
     </Wrapper>
   );
