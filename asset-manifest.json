@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/exchange-demo/static/js/main.85e94ec9.chunk.js",
-    "main.js.map": "/exchange-demo/static/js/main.85e94ec9.chunk.js.map",
+    "main.js": "/exchange-demo/static/js/main.52294591.chunk.js",
+    "main.js.map": "/exchange-demo/static/js/main.52294591.chunk.js.map",
     "runtime-main.js": "/exchange-demo/static/js/runtime-main.7e82d605.js",
     "runtime-main.js.map": "/exchange-demo/static/js/runtime-main.7e82d605.js.map",
     "static/js/2.b9b3b3bf.chunk.js": "/exchange-demo/static/js/2.b9b3b3bf.chunk.js",
     "static/js/2.b9b3b3bf.chunk.js.map": "/exchange-demo/static/js/2.b9b3b3bf.chunk.js.map",
     "index.html": "/exchange-demo/index.html",
-    "precache-manifest.30c48c89469152c253eccd52d2e23e6e.js": "/exchange-demo/precache-manifest.30c48c89469152c253eccd52d2e23e6e.js",
+    "precache-manifest.27f0fdb8c78f69e66e45975bc44753f2.js": "/exchange-demo/precache-manifest.27f0fdb8c78f69e66e45975bc44753f2.js",
     "service-worker.js": "/exchange-demo/service-worker.js"
   },
   "entrypoints": [
     "static/js/runtime-main.7e82d605.js",
     "static/js/2.b9b3b3bf.chunk.js",
-    "static/js/main.85e94ec9.chunk.js"
+    "static/js/main.52294591.chunk.js"
   ]
 }
