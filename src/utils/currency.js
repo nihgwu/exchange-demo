@@ -34,7 +34,9 @@ export const getCodeSymbol = code => {
 };
 
 // trim trailing zeros
-export const trimNumber = (value, digits = 2) => Number(value.toFixed(digits));
+export const trimNumber = (value, maxDigits = 2) => {
+  return Number(value.toFixed(maxDigits));
+};
 
 export const formatMoney = (code, value) => {
   return `${getCodeSymbol(code)}${trimNumber(value)}`;
@@ -44,8 +46,6 @@ export const formatRate = (base, code, rates) => {
   if (!rates || !rates[code] || !rates[code]) return '';
 
   const rate = rates[code] / rates[base];
-  return `${getCodeSymbol(base)}1 = ${getCodeSymbol(code)}${trimNumber(
-    rate,
-    4
-  )}`;
+  const value = trimNumber(rate, 4);
+  return `${getCodeSymbol(base)}1 = ${getCodeSymbol(code)}${value}`;
 };

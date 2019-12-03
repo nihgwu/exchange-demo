@@ -45,7 +45,10 @@ const useRates = () => {
       initial.current = false;
     }
 
-    return () => clearInterval(interval);
+    return () => {
+      cancelGetRates();
+      clearInterval(interval);
+    };
   }, [setData]);
 
   return data;
