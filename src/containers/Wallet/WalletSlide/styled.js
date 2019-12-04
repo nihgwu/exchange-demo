@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 
-import { colors } from 'utils/theme';
-
 export const Description = styled.div`
-  color: ${colors.light};
+  color: ${props => props.theme.colors.light};
   font-size: 16px;
 `;
 
@@ -20,7 +18,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Balance = styled.div`
-  color: ${colors.white};
+  color: ${props => props.theme.colors.white};
   font-size: 32px;
   margin: 30px;
 `;

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { boolean, colors } from 'utils/theme';
+import { boolean } from 'utils/theme';
 
 export const Wrapper = styled.button`
   background: transparent;
@@ -26,15 +26,15 @@ export const Circle = styled.div`
   width: ${props => props.size}px;
   height: ${props => props.size}px;
   border-radius: 50%;
-  border: 1px solid ${colors.light};
+  border: 1px solid ${props => props.theme.colors.light};
 `;
 
 export const Svg = styled.svg`
-  color: ${colors.white};
+  color: ${props => props.theme.colors.white};
 `;
 
 export const Label = styled.label`
-  color: ${colors.light};
+  color: ${props => props.theme.colors.light};
   font-size: 14px;
   margin-top: 10px;
 `;

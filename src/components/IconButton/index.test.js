@@ -1,11 +1,11 @@
 import React from 'react';
-import { render, fireEvent, waitForDomChange } from '@testing-library/react';
+import { render, fireEvent } from 'utils/test';
 
 import IconButton from './index';
 
 describe('IconButton', () => {
   it('should renders correctly', () => {
-    const { container } = render(<IconButton icon="svg" />);
+    const { container } = render(<IconButton icon="svg" size={24} />);
 
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -14,14 +14,6 @@ describe('IconButton', () => {
     const { getByText } = render(<IconButton icon="svg">Action</IconButton>);
 
     expect(getByText('Action')).toBeTruthy();
-  });
-
-  it('should set icon size correctly', () => {
-    const { container } = render(<IconButton icon="svg" iconSize={24} />);
-
-    const circle = container.firstChild.firstChild;
-    expect(circle).toHaveStyleRule('width', '24px');
-    expect(circle).toHaveStyleRule('height', '24px');
   });
 
   it('should not invoke click event when disabled', () => {

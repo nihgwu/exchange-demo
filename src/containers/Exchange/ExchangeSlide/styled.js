@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components';
 
 import CurrencyInput from 'components/CurrencyInput';
-import { variant, colors } from 'utils/theme';
+import { variant } from 'utils/theme';
 
 export const Wrapper = styled.div`
   height: 200px;
 
   ${variant('direction', {
     from: css`
-      background-color: ${colors.primary};
+      background-color: ${props => props.theme.colors.primary};
       position: relative;
 
       &::after {
@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
         height: 0;
         border-style: solid;
         border-width: 16px 16px 0;
-        border-color: ${colors.primary} transparent
+        border-color: ${props => props.theme.colors.primary} transparent
           transparent;
         transform: translateX(-50%) translateY(100%);
       }
@@ -45,14 +45,14 @@ export const Label = styled.label`
 
 export const Code = styled.div`
   width: 40%;
-  color: ${colors.white};
+  color: ${props => props.theme.colors.white};
   font-size: 36px;
   padding-right: 10px;
 `;
 
 export const Input = styled(CurrencyInput)`
   width: 60%;
-  color: ${colors.white};
+  color: ${props => props.theme.colors.white};
   font-size: 36px;
 `;
 
@@ -65,6 +65,6 @@ export const Balance = styled.div`
 `;
 
 export const Text = styled.div`
-  color: ${colors.light};
+  color: ${props => props.theme.colors.light};
   font-size: 16px;
 `;

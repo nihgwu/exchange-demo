@@ -44,6 +44,7 @@ exports[`IconButton should renders correctly 1`] = `
 
 <button
   class="c0"
+  size="24"
 >
   <div
     class="c1"
