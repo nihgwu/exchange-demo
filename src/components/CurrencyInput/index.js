@@ -7,10 +7,17 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 
+import { trimNumber } from 'utils/currency';
+
 import { Input } from './styled';
 
 const isValidInput = input => input === '' || /^\d+\.?\d{0,2}$/.test(input);
-const normalizeValue = value => (value ? value.toString() : '');
+
+const normalizeValue = value => {
+  if (!value) return '';
+
+  return trimNumber(value).toString();
+}
 
 const CurrencyInput = forwardRef(
   ({ value: _value, maxValue, prefix = '', onChange, ...rest }, ref) => {

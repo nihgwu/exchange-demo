@@ -8,6 +8,7 @@ import {
   formatMoney,
   formatRate,
 } from 'utils/currency';
+
 import { Wrapper, Item, Label, Code, Input, Balance, Text } from './styled';
 
 const ExchangeSlide = ({

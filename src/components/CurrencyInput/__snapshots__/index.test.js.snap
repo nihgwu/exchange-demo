@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurrencyInput should renders correctly 1`] = `
+.c0 {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  outline: none;
+  text-align: right;
+}
+
+<input
+  class="c0"
+  value=""
+/>
+`;
