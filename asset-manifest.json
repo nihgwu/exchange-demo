@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/exchange-demo/static/js/main.8fbdaf02.chunk.js",
-    "main.js.map": "/exchange-demo/static/js/main.8fbdaf02.chunk.js.map",
+    "main.js": "/exchange-demo/static/js/main.8d0837b0.chunk.js",
+    "main.js.map": "/exchange-demo/static/js/main.8d0837b0.chunk.js.map",
     "runtime-main.js": "/exchange-demo/static/js/runtime-main.7e82d605.js",
     "runtime-main.js.map": "/exchange-demo/static/js/runtime-main.7e82d605.js.map",
-    "static/js/2.71c28daf.chunk.js": "/exchange-demo/static/js/2.71c28daf.chunk.js",
-    "static/js/2.71c28daf.chunk.js.map": "/exchange-demo/static/js/2.71c28daf.chunk.js.map",
+    "static/js/2.68c4d1b6.chunk.js": "/exchange-demo/static/js/2.68c4d1b6.chunk.js",
+    "static/js/2.68c4d1b6.chunk.js.map": "/exchange-demo/static/js/2.68c4d1b6.chunk.js.map",
     "index.html": "/exchange-demo/index.html",
-    "precache-manifest.3796151c579d3ab8b83ac300de8a7fee.js": "/exchange-demo/precache-manifest.3796151c579d3ab8b83ac300de8a7fee.js",
+    "precache-manifest.f79d56335f2d4f6a8cccde6ccf5a843b.js": "/exchange-demo/precache-manifest.f79d56335f2d4f6a8cccde6ccf5a843b.js",
     "service-worker.js": "/exchange-demo/service-worker.js"
   },
   "entrypoints": [
     "static/js/runtime-main.7e82d605.js",
-    "static/js/2.71c28daf.chunk.js",
-    "static/js/main.8fbdaf02.chunk.js"
+    "static/js/2.68c4d1b6.chunk.js",
+    "static/js/main.8d0837b0.chunk.js"
   ]
 }
