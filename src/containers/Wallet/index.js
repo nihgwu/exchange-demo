@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Wrapper, ActionBar, Error } from './styled';
 import WalletSlide from './WalletSlide';
 
-const Exchange = ({ showExchange, ...rest }) => {
+const Wallet = ({ showExchange, ...rest }) => {
   const [currentCode, balance, loading, error] = useSelector(state => [
     state.wallet.currentCode,
     state.wallet.balance,
@@ -20,11 +20,11 @@ const Exchange = ({ showExchange, ...rest }) => {
   }, [dispatch]);
 
   if (error) {
-    return <Error>Load balance failed</Error>;
+    return <Error data-testid="wallet-page">Load balance failed</Error>;
   }
 
   return (
-    <Wrapper>
+    <Wrapper data-testid="wallet-page">
       <WalletSlide
         balance={balance}
         currentCode={currentCode}
@@ -49,4 +49,4 @@ const Exchange = ({ showExchange, ...rest }) => {
   );
 };
 
-export default Exchange;
+export default Wallet;

@@ -3,18 +3,20 @@ import PropTypes from 'prop-types';
 
 import { Wrapper, Circle, Svg, Label } from './styled';
 
-const IconButton = forwardRef(
-  ({ children, icon, iconSize = 48, disabled, ...rest }, ref) => (
+const IconButton = forwardRef(function IconButton(
+  { children, icon, iconSize = 48, disabled, ...rest },
+  ref
+) {
+  return (
     <Wrapper {...rest} ref={ref} disabled={disabled}>
       <Circle size={iconSize}>
         <Svg as={icon} />
       </Circle>
       {children && <Label>{children}</Label>}
     </Wrapper>
-  )
-);
+  );
+});
 
-IconButton.displayName = 'IconButton';
 IconButton.propTypes = {
   children: PropTypes.string,
   icon: PropTypes.elementType.isRequired,

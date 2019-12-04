@@ -17,55 +17,55 @@ const normalizeValue = value => {
   if (!value) return '';
 
   return trimNumber(value).toString();
-}
+};
 
-const CurrencyInput = forwardRef(
-  ({ value: _value, maxValue, prefix = '', onChange, ...rest }, ref) => {
-    const prevValue = useRef(_value);
-    const [value, setValue] = useState(normalizeValue(_value));
-    const handleChange = useCallback(
-      e => {
-        const input = e.target.value.replace(prefix, '');
+const CurrencyInput = forwardRef(function CurrencyInput(
+  { value: _value, maxValue, prefix = '', onChange, ...rest },
+  ref
+) {
+  const prevValue = useRef(_value);
+  const [value, setValue] = useState(normalizeValue(_value));
+  const handleChange = useCallback(
+    e => {
+      const input = e.target.value.replace(prefix, '');
 
-        if (isValidInput(input)) {
-          const value = Number(input);
-          if (maxValue !== undefined && value > maxValue) return;
+      if (isValidInput(input)) {
+        const value = Number(input);
+        if (maxValue !== undefined && value > maxValue) return;
 
-          setValue(input);
-          onChange && onChange(Number(value));
-        }
-      },
-      [prefix, maxValue, setValue, onChange]
-    );
-
-    const handleBlur = useCallback(() => {
-      if (Number(value) === 0) {
-        setValue('');
-      } else if (value[value.length - 1] === '.') {
-        setValue(value.substr(0, value.length - 1));
+        setValue(input);
+        onChange && onChange(Number(value));
       }
-    }, [value]);
+    },
+    [prefix, maxValue, setValue, onChange]
+  );
 
-    useEffect(() => {
-      if (prevValue.current !== _value) {
-        setValue(normalizeValue(_value));
-        prevValue.current = _value;
-      }
-    }, [prevValue, _value]);
+  const handleBlur = useCallback(() => {
+    if (Number(value) === 0) {
+      setValue('');
+    } else if (value[value.length - 1] === '.') {
+      setValue(value.substr(0, value.length - 1));
+    }
+  }, [value]);
 
-    return (
-      <Input
-        {...rest}
-        ref={ref}
-        value={value === '' ? '' : `${prefix}${value}`}
-        onChange={handleChange}
-        onBlur={handleBlur}
-      />
-    );
-  }
-);
+  useEffect(() => {
+    if (prevValue.current !== _value) {
+      setValue(normalizeValue(_value));
+      prevValue.current = _value;
+    }
+  }, [prevValue, _value]);
 
-CurrencyInput.displayName = 'CurrencyInput';
+  return (
+    <Input
+      {...rest}
+      ref={ref}
+      value={value === '' ? '' : `${prefix}${value}`}
+      onChange={handleChange}
+      onBlur={handleBlur}
+    />
+  );
+});
+
 CurrencyInput.propTypes = {
   value: PropTypes.number,
   maxValue: PropTypes.number,

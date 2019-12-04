@@ -75,7 +75,7 @@ const Exchange = () => {
   }, [dispatch, fromCode, fromAmount, toCode, toAmount]);
 
   return (
-    <Wrapper>
+    <Wrapper data-testid="exchange-modal">
       <Header>
         <HeaderLeft>
           <Button onClick={dispatch.wallet.hideExchange}>Cancel</Button>
